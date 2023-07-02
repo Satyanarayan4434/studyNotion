@@ -1,7 +1,28 @@
 import "./App.css";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import { Routes, Route } from "react-router-dom";
+import Mainheader from "./pages/Mainheader";
+import React, {useState} from 'react';
+
+
 
 function App() {
-  return <div>Hello World</div>;
+  const[isLogedIn, setIsLogedIn]=useState(false);
+  return (
+    <div>
+      <Navbar isLogedIn={isLogedIn}/>
+      <Routes>
+        <Route path="/" element={<Mainheader/>}>
+          <Route index element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
