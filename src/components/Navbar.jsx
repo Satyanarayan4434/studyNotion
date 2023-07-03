@@ -18,7 +18,7 @@ function Navbar({isLogedIn}) {
         </div>
         <div className='flex gap-8 text-white'>
           {!isLogedIn&&<button className='bg-slate-800 p-2 rounded-md border border-blue-200'><NavLink to="/logIn">Log In</NavLink></button>}
-          {!isLogedIn&&<button className='bg-slate-800 p-2 rounded-md border border-blue-200'>Sign Up</button>}
+          {!isLogedIn&&<button className='bg-slate-800 p-2 rounded-md border border-blue-200'><NavLink to="/signUp">Sign Up</NavLink></button>}
           {isLogedIn&&<button className='bg-slate-800 p-2 rounded-md border border-blue-200'>Log Out</button>}
           {isLogedIn&&<button className='bg-slate-800 p-2 rounded-md border border-blue-200'>Dashboard</button>}
         </div>

@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import Mainheader from "./pages/Mainheader";
 import React, {useState} from 'react';
 import LogIn from "./pages/LogIn";
+import SignUp from "./pages/SignUp"
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/logIn" element={<LogIn/>}></Route>
+          <Route path="/signUp" element={<SignUp/>}></Route>
         </Route>
       </Routes>
     </div>
