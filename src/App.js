@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import { Routes, Route } from "react-router-dom";
 import Mainheader from "./pages/Mainheader";
 import React, {useState} from 'react';
+import LogIn from "./pages/LogIn";
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/logIn" element={<LogIn/>}></Route>
         </Route>
       </Routes>
     </div>
