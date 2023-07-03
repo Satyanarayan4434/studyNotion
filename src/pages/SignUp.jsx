@@ -4,7 +4,7 @@ import login from "../assets/login.png";
 import { FcGoogle } from "react-icons/fc";
 import Student from "../components/Student";
 import Instractor from "../components/Instractor"
-function LogIn() {
+function LogIn(props) {
     const [click, setClick] = useState(true);
     let clickHandler2=()=>{
         setClick(false)
@@ -12,6 +12,7 @@ function LogIn() {
     let clickHandler1=()=>{
         setClick(true)
     }
+    
   return (
     <div className="bg-[#000814] overflow-y-hidden flex h-[60rem]  ">
       <div className="flex w-[1080px] mx-auto text-white relative mt-16 gap-[10rem] items-center">
@@ -31,11 +32,9 @@ function LogIn() {
           </div>
           
           {
-            click === true?(<Student />):(<Instractor/>)
+            click === true?(<Student setIsLogedIn={props.setIsLogedIn}/>):(<Instractor  setIsLogedIn={props.setIsLogedIn}/>)
           }
-          <button className="bg-yellow-50 h-[3rem] rounded-md w-[31.3rem] text-lg hover:shadow-md hover:shadow-blue-600">
-            Sign Up
-          </button>
+          
           <div className="flex items-center gap-8">
             <div className="w-[10rem] bg-white h-[1px]"></div>
             <p>OR</p>

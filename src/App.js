@@ -7,22 +7,25 @@ import { Routes, Route } from "react-router-dom";
 import Mainheader from "./pages/Mainheader";
 import React, {useState} from 'react';
 import LogIn from "./pages/LogIn";
-import SignUp from "./pages/SignUp"
+import SignUp from "./pages/SignUp";
+import Dashboard from "./pages/Dashboard";
 
 
 
 function App() {
   const[isLogedIn, setIsLogedIn]=useState(false);
+  console.log(isLogedIn);
   return (
     <div>
-      <Navbar isLogedIn={isLogedIn}/>
+      <Navbar isLogedIn={isLogedIn} setIsLogedIn={setIsLogedIn}/>
       <Routes>
         <Route path="/" element={<Mainheader/>}>
           <Route index element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/logIn" element={<LogIn/>}></Route>
-          <Route path="/signUp" element={<SignUp/>}></Route>
+          <Route path="/logIn" element={<LogIn setIsLogedIn={setIsLogedIn}/>}></Route>
+          <Route path="/signUp" element={<SignUp  setIsLogedIn={setIsLogedIn}/>}></Route>
+          <Route path="/dashboard" element={<Dashboard/>}></Route>
         </Route>
       </Routes>
     </div>
