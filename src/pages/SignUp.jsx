@@ -40,7 +40,7 @@ function LogIn(props) {
             <p>OR</p>
             <div className="w-[10rem] bg-white h-[1px]"></div>
           </div>
-          <button className="bg-white flex items-center justify-center gap-5  h-[3rem] rounded-md w-[25rem] text-lg text-black hover:shadow-md hover:shadow-blue-600">
+          <button className="bg-white flex items-center justify-center gap-5  h-[3rem] rounded-md  text-lg text-black hover:shadow-md hover:shadow-blue-600">
             <FcGoogle />
             Sign Up with Google
           </button>

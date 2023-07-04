@@ -1,7 +1,19 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
+import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai';
+import toast from 'react-hot-toast';
 
 function Instractor(props) {
+  const [isVisible1, setIsvisible1] = useState(false);
+    let visibleChangeHandler1=(event)=>{
+        event.preventDefault()
+        setIsvisible1((isVisible1)=> !isVisible1);
+    }
+    const [isVisible2, setIsvisible2] = useState(false);
+    let visibleChangeHandler2=(event)=>{
+        event.preventDefault()
+        setIsvisible2((isVisible2)=> !isVisible2);
+    }
   const Navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -14,7 +26,7 @@ function Instractor(props) {
     setFormData((prevData) => {
       return { ...prevData, [name]: value };
     });
-    console.log(formData);
+    
   };
   const [data, setData] = useState([]);
   let formHandler = (event) => {
@@ -23,6 +35,7 @@ function Instractor(props) {
     if (formData.email !== "" && formData.password!=="") {
       props.setIsLogedIn(true);
       Navigate("/dashboard");
+      toast.success("Signed Up Successfully!");
   }
   else{
       alert("Login Failed!")
@@ -58,29 +71,31 @@ function Instractor(props) {
       />
     </label>
     <div className="flex gap-5">
-      <label className="flex flex-col ">
+      <label className="flex flex-col relative">
         <div>
           Password<span className="text-red-400">*</span>
         </div>
         <input
-          type="password"
+          type={!isVisible1?('password'):('text')}
           placeholder="Enter Password"
           className="rounded-md p-2 w-[15rem] text-black"
           name='password'
           onChange={changeHandler}
         />
+        <button className='absolute top-[36px] right-[1rem] text-black' onClick={visibleChangeHandler1}>{!isVisible1?(<AiOutlineEye />):(<AiOutlineEyeInvisible/>)}</button>
       </label>
-      <label className="flex flex-col">
+      <label className="flex flex-col relative">
         <div>
           Confirm Password<span className="text-red-400">*</span>
         </div>
         <input
-          type="password"
+          type={!isVisible2?('password'):('text')}
           placeholder="Confirm Password"
           className="rounded-md p-2 w-[15rem] text-black"
           name='cnfpassword'
           onChange={changeHandler}
         />
+        <button className=' absolute top-[36px] right-[1rem] text-black' onClick={visibleChangeHandler2}>{!isVisible2?(<AiOutlineEye />):(<AiOutlineEyeInvisible/>)}</button>
         <a href="/logIn" className="text-blue-400">
           Forget Password?
         </a>

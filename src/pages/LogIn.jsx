@@ -3,7 +3,18 @@ import frame from '../assets/frame.png';
 import login from '../assets/login.png';
 import {FcGoogle} from 'react-icons/fc'
 import { useNavigate } from 'react-router-dom';
+import {AiOutlineEye, AiOutlineEyeInvisible} from 'react-icons/ai';
+import toast from 'react-hot-toast';
+
 function LogIn(props) {
+
+    const [isVisible, setIsvisible] = useState(false);
+    let visibleChangeHandler=(event)=>{
+        event.preventDefault()
+        setIsvisible((isVisible)=> !isVisible);
+    }
+
+
     const Navigate = useNavigate();
     const [formData, setformData] =useState({
         email:"",
@@ -23,6 +34,7 @@ function LogIn(props) {
         if (formData.email !== "" && formData.password!=="") {
             props.setIsLogedIn(true);
             Navigate("/dashboard")
+            toast.success("Loged In Succesfully")
         }
         else{
             alert("Login Failed!")
@@ -31,6 +43,7 @@ function LogIn(props) {
 
   return (
     <div className='bg-[#000814] overflow-y-hidden-hidden flex h-screen pb-6'>
+    
         <div className='flex w-[1080px] mx-auto text-white relative mt-28 gap-[10rem] items-center'>
         <div className='font-mono flex flex-col gap-6'>
             <h1 className='text-4xl font-bold '>Welcome Back,</h1>
@@ -47,16 +60,17 @@ function LogIn(props) {
                         onChange={changeHandler}
                     />
                 </label>
-                <label className='flex flex-col'>
+                <label className='flex flex-col relative'>
                     <div>Password<span className='text-red-400'>*</span></div>
                     <input
-                        type='password'
+                        type={!isVisible?('password'):('text')}
                         placeholder='Enter Password'
                         className='rounded-md p-2 w-[25rem] text-black'
                         name='password'
                         value={formData.password}
                         onChange={changeHandler}
                     />
+                    <button className='absolute right-[7rem] top-[35px] text-black' onClick={visibleChangeHandler}>{!isVisible?(<AiOutlineEye />):(<AiOutlineEyeInvisible/>)}</button>
                      <a href='/logIn' className='text-blue-400'>Forget Password?</a>
                 </label>
             </form> 
